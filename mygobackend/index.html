@@ -1,109 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .glow-text:hover {
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-        }
-        .glow-button:hover {
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-    </style>
-    <title>Translation Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .glow-text:hover {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+  </style>
+  <title>Translation Page</title>
 </head>
 <body class="bg-gray-900 text-white font-sans">
-    <!-- Navigation Bar -->
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold glow-text">Translate✨</h1>
-            <p class="text-sm">Powered by Amazon Translate</p>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container mx-auto p-6">
-        <h2 class="text-2xl font-semibold">Translate Anything🌐</h2>
-        
-        <!-- Form for Text Areas and Dropdowns -->
-        <form id="translationForm">
-            <div class="grid grid-cols-1 md grid-cols-2 gap-4 mt-4">
-                <div class="relative">
-                    <textarea id="sourceText" class="bg-gray-700 text-white p-4 w-full h-32 rounded-lg" name="lyrics" placeholder="Source Language Text"></textarea>
-                    <label for="sourceLanguage" class="block text-sm mt-2">Choose Source Language</label>
-                    <select id="sourceLanguage" name="sourceLanguage" class="bg-gray-700 text-white pl-4 pu-4 rounded-lg w-full absolute bottom-0">
-                        <option value="auto">Auto-Recognition</option>
-                        <!-- Add more source language options as needed -->
-                    </select>
-                </div>
-                <div class="relative">
-                    <textarea id="destinationText" class="bg-gray-700 text-white p-4 w-full h-32 rounded-lg" name="lyrics" placeholder="Destination Language Text" readonly></textarea>
-                    <label for="destinationLanguage" class="block text-sm mt-2">Choose Destination Language</label>
-                    <select id="destinationLanguage" name="destinationLanguage" class="bg-gray-700 text-white pl-4 pu-4 pd-4 rounded-lg w-full absolute bottom-0">
-                        <option value="en">English</option>
-                        <option value="kn">Kannada</option>
-                        <option value="te">Telugu</option>
-                        <option value="ta">Tamil</option>
-                        <option value="ru">Russian</option>
-                        <option value="ml">Malayalam</option>
-                        <option value="ko">Korean</option>
-
-                        <!-- Add more destination language options as needed -->
-                    </select>
-                </div>
-            </div>
-
-            <!-- Translate Button with Hover Effect -->
-            <div class="mt-8 text-center">
-                <button id="translateButton" class="bg-gray-800 text-white p-3 rounded-lg glow-button hover:shadow-md" type="button">Translate</button>
-            </div>
-        </form>
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-800 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold glow-text">Translate✨</h1>
+      <p class="text-sm">Powered by Amazon Translate</p>
     </div>
+  </nav>
 
-    <!-- JavaScript to Handle Form Submission and Translation -->
-    <!-- JavaScript to Handle Form Submission and Translation -->
-    <!-- JavaScript to Handle Form Submission and Translation -->
-<script>
+  <!-- Main Content -->
+  <div class="container mx-auto p-6">
+    <h2 class="text-2xl font-semibold">Translate Anything🌐</h2>
+    
+    <!-- Form for HTML content and Language Selection -->
+    <form id="translationForm">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <!-- HTML input area -->
+        <div class="relative">
+          <textarea id="sourceText" class="bg-gray-700 text-white p-4 w-full h-32 rounded-lg" name="html" placeholder="Enter your HTML content here"></textarea>
+          <label for="sourceLanguage" class="block text-sm mt-2">Choose Source Language</label>
+          <select id="sourceLanguage" name="sourceLanguage" class="bg-gray-700 text-white pl-4 pr-4 rounded-lg w-full mt-2">
+            <option value="auto">Auto-Recognition</option>
+            <!-- Add more source language options as needed -->
+          </select>
+        </div>
+        <!-- Translated HTML output area -->
+        <div class="relative">
+          <textarea id="destinationText" class="bg-gray-700 text-white p-4 w-full h-32 rounded-lg" name="translatedHtml" placeholder="Translated HTML will appear here" readonly></textarea>
+          <label for="destinationLanguage" class="block text-sm mt-2">Choose Destination Language</label>
+          <select id="destinationLanguage" name="destinationLanguage" class="bg-gray-700 text-white pl-4 pr-4 rounded-lg w-full mt-2">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="pa">Punjabi</option>
+            <option value="ta">Tamil</option>
+            <option value="ru">Russian</option>
+            <option value="ml">Malayalam</option>
+            <option value="ko">Korean</option>
+            <!-- Add more destination language options as needed -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Translate Button with Hover Effect -->
+      <div class="mt-8 text-center">
+        <button id="translateButton" class="bg-gray-800 text-white p-3 rounded-lg glow-button hover:shadow-md" type="button">Translate</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- JavaScript to Handle Form Submission and Translation -->
+  <script>
     const sourceText = document.getElementById('sourceText');
     const destinationText = document.getElementById('destinationText');
-    const sourceLanguageSelect = document.getElementById('sourceLanguage'); // Correct variable name
-    const destinationLanguageSelect = document.getElementById('destinationLanguage'); // Correct variable name
+    const sourceLanguageSelect = document.getElementById('sourceLanguage');
+    const destinationLanguageSelect = document.getElementById('destinationLanguage');
     const translateButton = document.getElementById('translateButton');
 
     async function translate() {
-        // Get input values
-        const sourceLang = sourceLanguageSelect.value; // Correct variable name
-        const targetLang = destinationLanguageSelect.value; // Correct variable name
-        const text = sourceText.value;
+      // Get input values
+      const sourceLang = sourceLanguageSelect.value;
+      const targetLang = destinationLanguageSelect.value;
+      const htmlContent = sourceText.value;
 
-        // Call API
-        const response = await fetch('/translate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                sourceLanguage: sourceLang,
-                targetLanguage: targetLang,
-                text: text
-            })
-        });
-
-        try {
-            console.log('Button clicked');
-            const data = await response.json();
-            console.log(data);
-            destinationText.value = data.TranslatedText;
-            console.log('Translation applied');
-        } catch (error) {
-            console.error('Error parsing JSON:', error);
-    }
-
+      // Call API with updated payload keys
+      const response = await fetch('/translateHtml', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          html: htmlContent,
+          SourceLanguage: sourceLang,
+          TargetLanguage: targetLang
+        })
+      });
+      
+      try {
+        console.log('Button clicked');
+        const data = await response.json();
+        console.log(data);
+        // Use the key "translatedHtml" from the response
+        destinationText.value = data.translatedHtml;
+        console.log('Translation applied');
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
     }
 
     translateButton.addEventListener('click', translate);
-</script>
+  </script>
 </body>
 </html>
